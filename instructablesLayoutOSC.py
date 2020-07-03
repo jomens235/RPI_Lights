@@ -22,7 +22,6 @@ from random import seed
 from random import randint
 seed(1)
 
-
 server = OSCServer( ("10.0.0.123", 8000) ) #This has to be the IP of the R-Pi on the network
 client = OSCClient()
 
