@@ -26,15 +26,18 @@ def colorWipe(strip, color):
         strip.setPixelColor(i, color)
     strip.show()
 
-def twinkleTest(strip, onlyOne, count, wait_ms=50):
-    colorWipe(strip, Color(0,0,0))
-    for i in range(count):
-        strip.setPixelColor(randint(0,LED_COUNT), Color(170, 180, 30))
-        strip.show()
-        time.sleep(wait_ms/250.0)
-        if (onlyOne):
-           colorWipe(strip, Color(0,0,0))
-    time.sleep(wait_ms/500.0)
+def twinkleTest(strip, onlyOne, count, state, wait_ms=50):
+    while state:
+          colorWipe(strip, Color(0,0,0))
+          for i in range(count):
+              strip.setPixelColor(randint(0,LED_COUNT), Color(170, 180, 30))
+              strip.show()
+              time.sleep(wait_ms/250.0)
+              if (onlyOne):
+                 colorWipe(strip, Color(0,0,0))
+          time.sleep(wait_ms/500.0)
+          if not state:
+             break
 
 class Twinkle():
     def fadeIn(self, strip, pixel, wait_ms=50):
